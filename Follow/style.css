@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600&display=swap');
+
+:root {
+  --bg: #09090B;
+  --stone: #1B1B1F;
+  --purple: #6D28D9;
+  --purple-bright: #A855F7;
+  --text: #E5E5E5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #09090B;
+}
+
+.agreynn-alert {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 520px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(circle at center, rgba(109, 40, 217, .20), transparent 58%),
+    linear-gradient(180deg, #1B1B1F 0%, #111116 55%, #09090B 100%);
+
+  border: 1px solid rgba(229, 229, 229, .06);
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, .65),
+    inset 0 0 0 1px rgba(255, 255, 255, .025);
+
+  animation: alertIn .9s ease forwards;
+}
+
+.alert-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 360px;
+  height: 360px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(168, 85, 247, .38), rgba(109, 40, 217, .15), transparent 68%);
+  filter: blur(18px);
+  opacity: .7;
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+.agreynn-rune {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  opacity: .16;
+  filter:
+    drop-shadow(0 0 10px rgba(168, 85, 247, .65))
+    drop-shadow(0 0 34px rgba(109, 40, 217, .35));
+  animation: runeBreath 5.5s ease-in-out infinite;
+}
+
+.alert-content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  color: var(--text);
+}
+
+.alert-title,
+.alert-subtitle {
+  font-family: Cinzel, serif;
+  font-size: 15px;
+  letter-spacing: 2.8px;
+  line-height: 1;
+  color: rgba(229, 229, 229, .9);
+  text-shadow: 0 0 14px rgba(0, 0, 0, .85);
+}
+
+.alert-username {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 52px;
+  line-height: .9;
+  color: #F3EAFE;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, .25),
+    0 0 24px rgba(168, 85, 247, .55),
+    0 0 48px rgba(109, 40, 217, .32);
+}
+
+.fog {
+  position: absolute;
+  left: 0;
+  width: 115%;
+  pointer-events: none;
+  opacity: .48;
+}
+
+.fog-back {
+  bottom: -58px;
+  z-index: 2;
+  filter: blur(2px);
+  animation: fogBack 9s ease-in-out infinite alternate;
+}
+
+.fog-front {
+  bottom: -72px;
+  z-index: 8;
+  opacity: .36;
+  filter: blur(4px);
+  animation: fogFront 7s ease-in-out infinite alternate;
+}
+
+.feather {
+  position: absolute;
+  z-index: 7;
+  width: 42px;
+  opacity: .82;
+  filter:
+    drop-shadow(0 0 5px rgba(0, 0, 0, .7))
+    drop-shadow(0 0 8px rgba(168, 85, 247, .16));
+}
+
+.feather-one {
+  right: 72px;
+  top: 18px;
+  transform: rotate(24deg);
+  animation: featherFloatOne 6s ease-in-out infinite;
+}
+
+.feather-two {
+  right: 132px;
+  bottom: 22px;
+  width: 34px;
+  opacity: .58;
+  transform: rotate(-38deg);
+  animation: featherFloatTwo 7s ease-in-out infinite;
+}
+
+.feather-three {
+  left: 58px;
+  bottom: 28px;
+  width: 28px;
+  opacity: .38;
+  transform: rotate(18deg);
+  animation: featherFloatThree 8s ease-in-out infinite;
+}
+
+@keyframes alertIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.94);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: .52;
+    transform: translate(-50%, -50%) scale(.95);
+  }
+
+  50% {
+    opacity: .82;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes runeBreath {
+  0%, 100% {
+    opacity: .12;
+    transform: translate(-50%, -50%) scale(.96);
+  }
+
+  50% {
+    opacity: .22;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+@keyframes fogBack {
+  from {
+    transform: translateX(-28px);
+  }
+
+  to {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes fogFront {
+  from {
+    transform: translateX(26px);
+  }
+
+  to {
+    transform: translateX(-22px);
+  }
+}
+
+@keyframes featherFloatOne {
+  0%, 100% {
+    transform: translateY(0) rotate(24deg);
+  }
+
+  50% {
+    transform: translateY(9px) rotate(18deg);
+  }
+}
+
+@keyframes featherFloatTwo {
+  0%, 100% {
+    transform: translateY(0) rotate(-38deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(-30deg);
+  }
+}
+
+@keyframes featherFloatThree {
+  0%, 100% {
+    transform: translateY(0) rotate(18deg);
+  }
+
+  50% {
+    transform: translateY(7px) rotate(25deg);
+  }
+}

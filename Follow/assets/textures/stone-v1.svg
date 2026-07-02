@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="320" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+  <title>Agreynn Stone Texture V1</title>
+
+  <defs>
+    <filter id="roughStone">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="18"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.22"/>
+      </feComponentTransfer>
+    </filter>
+
+    <linearGradient id="stoneBase" x1="0" y1="0" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#232329"/>
+      <stop offset="0.52" stop-color="#17171B"/>
+      <stop offset="1" stop-color="#09090B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="320" fill="url(#stoneBase)"/>
+
+  <rect width="900" height="320" filter="url(#roughStone)" opacity=".42"/>
+
+  <g fill="none" stroke="#31313A" stroke-opacity=".22" stroke-width="1.4">
+    <path d="M40 82 C120 68 158 95 230 72 C315 45 380 82 465 56"/>
+    <path d="M520 88 C590 62 680 84 760 58 C815 40 860 44 900 34"/>
+    <path d="M70 238 C145 210 215 250 300 218 C360 196 430 214 505 186"/>
+    <path d="M555 245 C640 220 690 250 780 220 C820 206 860 210 900 198"/>
+  </g>
+
+  <g fill="none" stroke="#09090B" stroke-opacity=".55" stroke-width="2">
+    <path d="M115 26 C110 60 135 72 128 105"/>
+    <path d="M392 112 C420 128 412 152 438 170"/>
+    <path d="M705 92 C688 120 702 144 680 170"/>
+    <path d="M250 265 C278 250 300 264 328 240"/>
+  </g>
+
+  <g fill="none" stroke="#A855F7" stroke-opacity=".045" stroke-width="2">
+    <path d="M0 160 C140 118 260 180 390 138 C520 96 660 158 900 118"/>
+    <path d="M0 210 C180 176 300 230 500 188 C640 158 760 190 900 168"/>
+  </g>
+</svg>
