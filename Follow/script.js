@@ -1,93 +1,61 @@
-/*==================================================
-            AGREYNN FOLLOW ALERT
-                Version 0.1
-===================================================*/
-
-//=====================================
-// CONFIGURACIÓN
-//=====================================
-
 const SETTINGS = {
-
-    duration: 6000,
-
-    previewName: "Agreynn",
-
-    preview: true
-
+  duration: 6000,
+  previewName: "Agreynn",
+  preview: false
 };
 
+const followSound = new Audio(
+  "https://agreynn.github.io/agreynn-widgets/Follow/assets/audio/follow.mp3"
+);
 
-//=====================================
-// ELEMENTOS
-//=====================================
+followSound.volume = 0.45;
 
 const alertBox = document.getElementById("agreynn-alert");
-
 const username = document.getElementById("username");
 
+let hideTimer;
 
-//=====================================
-// MOSTRAR ALERTA
-//=====================================
-
-function showAlert(name){
-
-    username.textContent = name;
-
-    alertBox.classList.remove("hide");
-
-    alertBox.classList.add("show");
-
-    setTimeout(()=>{
-
-        hideAlert();
-
-    },SETTINGS.duration);
-
+function playSound() {
+  followSound.pause();
+  followSound.currentTime = 0;
+  followSound.play().catch(() => {});
 }
 
+function showAlert(name) {
+  clearTimeout(hideTimer);
 
-//=====================================
-// OCULTAR ALERTA
-//=====================================
+  username.textContent = name || "nuevo seguidor";
 
-function hideAlert(){
+  playSound();
 
-    alertBox.classList.remove("show");
+  alertBox.classList.remove("hide");
+  alertBox.classList.remove("show");
 
-    alertBox.classList.add("hide");
+  void alertBox.offsetWidth;
 
+  alertBox.classList.add("show");
+
+  hideTimer = setTimeout(() => {
+    hideAlert();
+  }, SETTINGS.duration);
 }
 
-
-//=====================================
-// PREVIEW PARA VS CODE
-//=====================================
-
-if(SETTINGS.preview){
-
-    window.onload = ()=>{
-
-        showAlert(SETTINGS.previewName);
-
-    }
-
+function hideAlert() {
+  alertBox.classList.remove("show");
+  alertBox.classList.add("hide");
 }
 
-
-//=====================================
-// STREAMELEMENTS
-//=====================================
+if (SETTINGS.preview) {
+  window.onload = () => {
+    showAlert(SETTINGS.previewName);
+  };
+}
 
 window.addEventListener("onEventReceived", function (obj) {
+  const listener = obj.detail.listener;
+  const event = obj.detail.event;
 
-    const listener = obj.detail.listener;
+  if (listener !== "follower-latest") return;
 
-    const event = obj.detail.event;
-
-    if(listener !== "follower-latest") return;
-
-    showAlert(event.name);
-
+  showAlert(event.name);
 });
