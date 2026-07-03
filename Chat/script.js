@@ -3,7 +3,7 @@ const chatMessages = document.getElementById("chat-messages");
 const SETTINGS = {
   maxMessages: 6,
   messageDuration: 16000,
-  preview: false
+  preview: true
 };
 
 function addMessage(name, text) {
