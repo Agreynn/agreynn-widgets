@@ -2,17 +2,19 @@ const chatMessages = document.getElementById("chat-messages");
 
 const SETTINGS = {
   maxMessages: 6,
-  messageDuration: 16000,
-  preview: false
+  messageDuration: 12000,
+  preview: true
 };
 
 function addMessage(name, text) {
+  if (!text) return;
+
   const message = document.createElement("div");
   message.className = "chat-message";
 
   const user = document.createElement("span");
   user.className = "chat-name";
-  user.textContent = name;
+  user.textContent = name || "Usuario";
 
   const content = document.createElement("span");
   content.className = "chat-text";
@@ -39,14 +41,28 @@ function addMessage(name, text) {
 
 window.addEventListener("onEventReceived", function (obj) {
   const listener = obj.detail.listener;
-  const event = obj.detail.event;
 
   if (listener !== "message") return;
 
-  addMessage(event.displayName || event.nick || "Usuario", event.text || "");
+  const event = obj.detail.event;
+  const data = event.data || event;
+
+  const name =
+    data.displayName ||
+    data.nick ||
+    data.username ||
+    data.name ||
+    "Usuario";
+
+  const text =
+    data.text ||
+    data.message ||
+    data.renderedText ||
+    "";
+
+  addMessage(name, text);
 });
 
 if (SETTINGS.preview) {
-  addMessage("Agreynn", "La niebla se alza...");
-  addMessage("Cuervo", "El bosque vuelve al silencio.");
+  addMessage("Agreynn", "Mensaje de prueba del chat.");
 }
