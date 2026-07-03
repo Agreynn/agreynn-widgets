@@ -5,7 +5,7 @@ const SETTINGS = {
 };
 
 const followSound = new Audio(
-  "https://agreynn.github.io/agreynn-widgets/Follow/assets/audio/follow.mp3"
+  "https://Agreynn.github.io/agreynn-widgets/Follow/assets/audio/follow.mp3"
 );
 
 followSound.volume = 0.45;
