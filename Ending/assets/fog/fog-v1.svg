@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="260" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
+  <title>Agreynn Fog V1</title>
+
+  <defs>
+    <filter id="softBlur" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+    <linearGradient id="fogFade" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E5E5E5" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#E5E5E5" stop-opacity="0.20"/>
+      <stop offset="0.50" stop-color="#A855F7" stop-opacity="0.16"/>
+      <stop offset="0.82" stop-color="#E5E5E5" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#E5E5E5" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="fogPurple" x1="0" y1="260" x2="900" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D28D9" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#6D28D9" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#A855F7" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#softBlur)">
+    <path
+      d="M-40 190
+         C70 135 150 185 245 150
+         C330 118 390 155 470 135
+         C575 108 645 165 735 138
+         C820 112 910 150 950 132
+         L950 290
+         L-40 290Z"
+      fill="url(#fogFade)"
+      opacity="0.95"
+    />
+
+    <path
+      d="M-70 215
+         C40 178 130 210 220 182
+         C315 151 385 206 490 172
+         C590 140 660 204 760 171
+         C840 145 925 184 970 165
+         L970 300
+         L-70 300Z"
+      fill="url(#fogPurple)"
+      opacity="0.85"
+    />
+
+    <path
+      d="M20 120
+         C95 82 150 122 205 98
+         C260 75 315 105 365 88
+         C440 64 505 108 570 86
+         C635 64 705 102 760 84
+         C825 64 880 88 925 76"
+      fill="none"
+      stroke="#E5E5E5"
+      stroke-opacity="0.08"
+      stroke-width="34"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M-20 160
+         C90 128 170 172 280 142
+         C395 112 455 150 565 130
+         C680 108 760 150 910 115"
+      fill="none"
+      stroke="#A855F7"
+      stroke-opacity="0.08"
+      stroke-width="42"
+      stroke-linecap="round"
+    />
+  </g>
+</svg>

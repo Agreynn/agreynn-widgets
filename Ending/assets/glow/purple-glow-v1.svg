@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="600" viewBox="0 0 600 600"
+     xmlns="http://www.w3.org/2000/svg">
+
+<title>Agreynn Purple Glow V1</title>
+
+<defs>
+
+    <radialGradient id="Glow">
+
+        <stop offset="0%" stop-color="#A855F7" stop-opacity=".85"/>
+
+        <stop offset="20%" stop-color="#8E49EF" stop-opacity=".55"/>
+
+        <stop offset="45%" stop-color="#6D28D9" stop-opacity=".28"/>
+
+        <stop offset="70%" stop-color="#6D28D9" stop-opacity=".08"/>
+
+        <stop offset="100%" stop-color="#6D28D9" stop-opacity="0"/>
+
+    </radialGradient>
+
+</defs>
+
+<circle
+cx="300"
+cy="300"
+r="260"
+fill="url(#Glow)"/>
+
+</svg>
