@@ -126,13 +126,15 @@ body {
   position: absolute;
   z-index: 30;
   width: 145px;
-  opacity: .82;
+  opacity: .9;
+
   filter:
+  invert(1)
     brightness(100)
     saturate(0)
     contrast(1.15)
-    drop-shadow(0 0 10px rgba(255,255,255,.2))
-    drop-shadow(0 0 18px rgba(168,85,247,.12));
+    drop-shadow(0 0 10px rgba(255,255,255,.22))
+    drop-shadow(0 0 18px rgba(168,85,247,.16));
 }
 
 .feather-one {
