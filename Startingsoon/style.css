@@ -121,7 +121,7 @@ body {
   opacity: .9;
 
   filter:
-    brightness(10)
+    brightness(100)
     saturate(0)
     contrast(1.15)
     drop-shadow(0 0 10px rgba(255,255,255,.22))
