@@ -1,0 +1,417 @@
+@import url(
+  'https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap'
+);
+
+
+/* ================================
+   BASE
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #09090B;
+}
+
+
+/* ================================
+   ESCENA
+================================ */
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: #E5E5E5;
+}
+
+
+/* ================================
+   FONDO
+================================ */
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #09090B;
+}
+
+.stone-texture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .32;
+  filter:
+    brightness(.48)
+    contrast(1.18)
+    saturate(.7);
+  transform: scale(1.05);
+}
+
+.glow-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 680px;
+  height: 680px;
+  transform: translate(-50%, -50%);
+  opacity: .65;
+  filter: blur(8px);
+  animation: glowPulse 9s ease-in-out infinite;
+}
+
+
+/* ================================
+   CAPA OSCURA
+================================ */
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(9, 9, 11, .08) 0%,
+      rgba(9, 9, 11, .40) 48%,
+      rgba(9, 9, 11, .92) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(9, 9, 11, .35),
+      rgba(9, 9, 11, .80)
+    );
+}
+
+
+/* ================================
+   BRILLO MORADO
+================================ */
+
+.purple-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 650px;
+  height: 650px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, .20),
+      rgba(109, 40, 217, .07),
+      transparent 70%
+    );
+
+  filter: blur(36px);
+
+  animation: glowPulse 9s ease-in-out infinite;
+}
+
+
+/* ================================
+   CONTENIDO CENTRAL
+================================ */
+
+.center-content {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 24px;
+
+  padding: 40px;
+
+  text-align: center;
+}
+
+
+/* Nombre */
+.center-content h1 {
+  margin: 0;
+
+  font-family: Cinzel, serif;
+
+  font-size: clamp(64px, 8vw, 150px);
+  font-weight: 600;
+
+  letter-spacing: 12px;
+
+  color: #F3EAFE;
+
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, .20),
+    0 0 44px rgba(168, 85, 247, .34),
+    0 0 90px rgba(109, 40, 217, .24);
+}
+
+
+/* Mensaje principal */
+.brb-title {
+  margin: 0;
+
+  font-family: Cinzel, serif;
+
+  font-size: clamp(22px, 2.3vw, 42px);
+
+  letter-spacing: 5px;
+
+  color: rgba(229, 229, 229, .92);
+
+  text-shadow:
+    0 0 15px rgba(0, 0, 0, .95),
+    0 0 24px rgba(168, 85, 247, .16);
+}
+
+
+/* Mensaje cambiante */
+.center-content span {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(22px, 2vw, 38px);
+
+  letter-spacing: 3px;
+
+  color: rgba(229, 229, 229, .66);
+
+  text-shadow:
+    0 0 20px rgba(0, 0, 0, .95);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.center-content span.fade {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+
+/* ================================
+   NIEBLA
+================================ */
+
+.fog {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+
+  pointer-events: none;
+}
+
+.fog-back {
+  bottom: -120px;
+
+  z-index: 4;
+
+  opacity: .42;
+
+  filter: blur(4px);
+
+  animation:
+    fogBack 19s ease-in-out infinite alternate;
+}
+
+.fog-front {
+  bottom: -155px;
+
+  z-index: 7;
+
+  opacity: .58;
+
+  filter: blur(8px);
+
+  animation:
+    fogFront 15s ease-in-out infinite alternate;
+}
+
+
+/* ================================
+   PLUMAS
+================================ */
+
+.feather {
+  position: absolute;
+
+  z-index: 8;
+
+  width: 145px;
+
+  opacity: .82;
+
+  filter:
+    brightness(4)
+    saturate(0)
+    contrast(1.15)
+    drop-shadow(0 0 10px rgba(255, 255, 255, .20))
+    drop-shadow(0 0 18px rgba(168, 85, 247, .14));
+}
+
+.feather-one {
+  left: 9%;
+  bottom: 9%;
+
+  width: 165px;
+
+  animation:
+    featherFloatOne 10s ease-in-out infinite;
+}
+
+.feather-two {
+  right: 12%;
+  top: 13%;
+
+  width: 120px;
+  opacity: .52;
+
+  animation:
+    featherFloatTwo 13s ease-in-out infinite;
+}
+
+.feather-three {
+  left: 18%;
+  top: 16%;
+
+  width: 100px;
+  opacity: .35;
+
+  animation:
+    featherFloatThree 15s ease-in-out infinite;
+}
+
+.feather-four {
+  right: 19%;
+  bottom: 12%;
+
+  width: 110px;
+  opacity: .44;
+
+  animation:
+    featherFloatFour 12s ease-in-out infinite;
+}
+
+
+/* ================================
+   ANIMACIONES
+================================ */
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: .40;
+    transform:
+      translate(-50%, -50%)
+      scale(.96);
+  }
+
+  50% {
+    opacity: .75;
+    transform:
+      translate(-50%, -50%)
+      scale(1.08);
+  }
+}
+
+@keyframes fogBack {
+  from {
+    transform: translateX(-60px);
+  }
+
+  to {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes fogFront {
+  from {
+    transform: translateX(55px);
+  }
+
+  to {
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes featherFloatOne {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-24deg);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      rotate(-18deg);
+  }
+}
+
+@keyframes featherFloatTwo {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(24deg);
+  }
+
+  50% {
+    transform:
+      translateY(17px)
+      rotate(18deg);
+  }
+}
+
+@keyframes featherFloatThree {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(42deg);
+  }
+
+  50% {
+    transform:
+      translateY(13px)
+      rotate(35deg);
+  }
+}
+
+@keyframes featherFloatFour {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-38deg);
+  }
+
+  50% {
+    transform:
+      translateY(-12px)
+      rotate(-31deg);
+  }
+}

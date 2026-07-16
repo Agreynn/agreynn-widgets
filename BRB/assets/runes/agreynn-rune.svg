@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="256"
+    height="256"
+    viewBox="0 0 256 256">
+
+    <title>Agreynn Rune - The Watcher</title>
+
+    <g
+        fill="none"
+        stroke="#E5E5E5"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <!-- Eje central -->
+        <path d="M128 28 L128 220"/>
+
+        <!-- Alas -->
+        <path d="M128 72 L88 104"/>
+        <path d="M128 72 L168 104"/>
+
+        <!-- Centro -->
+        <path d="M96 128 L160 128"/>
+
+        <!-- Raíces -->
+        <path d="M128 220 L104 188"/>
+        <path d="M128 220 L152 188"/>
+
+    </g>
+
+</svg>
