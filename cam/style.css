@@ -193,8 +193,8 @@ position:absolute;
 width:95px;
 
 filter:
-
-brightness(4)
+invert(1)
+brightness(100)
 
 saturate(0)
 
