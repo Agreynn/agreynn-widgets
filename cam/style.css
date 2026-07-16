@@ -132,7 +132,7 @@ width:120%;
 
 transform:translate(-50%,-50%);
 
-opacity:.35;
+opacity:0;
 
 filter:blur(10px);
 
@@ -213,6 +213,7 @@ right:2px;
 transform:rotate(18deg);
 
 animation:feather1 8s ease-in-out infinite;
+
 
 }
 
