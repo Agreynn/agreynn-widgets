@@ -1,0 +1,677 @@
+@import url(
+    "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap"
+);
+
+
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: transparent;
+}
+
+body {
+    font-family: "Cormorant Garamond", serif;
+}
+
+.overlay {
+    position: relative;
+
+    width: 1920px;
+    height: 1080px;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    color: #E5E5E5;
+}
+
+
+/* =====================================
+   CABECERA
+===================================== */
+
+.top-bar {
+    position: absolute;
+
+    left: 45px;
+    right: 45px;
+    top: 18px;
+
+    height: 115px;
+
+    z-index: 30;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 34px;
+
+    pointer-events: none;
+}
+
+.channel-name {
+    min-width: 490px;
+
+    text-align: center;
+}
+
+.channel-name h1 {
+    margin: 0;
+
+    font-family: Cinzel, serif;
+
+    font-size: 55px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 13px;
+
+    color: #F1EAF8;
+
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, .14),
+        0 0 25px rgba(168, 85, 247, .40),
+        0 0 55px rgba(109, 40, 217, .30);
+}
+
+.small-title,
+.mode-title {
+    display: block;
+
+    font-family: Cinzel, serif;
+
+    color: rgba(229, 229, 229, .48);
+}
+
+.small-title {
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    letter-spacing: 8px;
+}
+
+.mode-title {
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    letter-spacing: 7px;
+
+    color: rgba(168, 85, 247, .74);
+}
+
+.top-line {
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168, 85, 247, .48),
+            rgba(229, 229, 229, .30),
+            rgba(168, 85, 247, .48),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(168, 85, 247, .28);
+}
+
+
+/* =====================================
+   ÁREA DE LA CÁMARA
+===================================== */
+
+.camera-area {
+    position: absolute;
+
+    left: 48px;
+    top: 148px;
+
+    width: 1325px;
+    height: 840px;
+
+    z-index: 20;
+}
+
+.camera-frame {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 48px;
+
+    border-radius: 24px;
+
+    /*
+       No tiene background.
+       El interior queda completamente transparente.
+    */
+    background: transparent;
+
+    border:
+        4px solid rgba(168, 85, 247, .47);
+
+    box-shadow:
+        0 0 16px rgba(168, 85, 247, .24),
+        0 0 42px rgba(109, 40, 217, .15),
+        inset 0 0 0 2px rgba(255, 255, 255, .035),
+        inset 0 0 24px rgba(0, 0, 0, .38);
+
+    overflow: hidden;
+
+    animation:
+        borderPulse 8s ease-in-out infinite;
+}
+
+.transparent-window {
+    position: absolute;
+
+    left: 14px;
+    right: 14px;
+    top: 14px;
+    bottom: 14px;
+
+    border-radius: 13px;
+
+    background: transparent;
+
+    pointer-events: none;
+}
+
+.camera-label {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Cinzel, serif;
+
+    font-size: 13px;
+
+    letter-spacing: 6px;
+
+    color: rgba(229, 229, 229, .50);
+
+    text-shadow:
+        0 0 12px rgba(168, 85, 247, .30);
+}
+
+
+/* =====================================
+   RUNAS DE LA CÁMARA
+===================================== */
+
+.camera-rune {
+    position: absolute;
+
+    top: 50%;
+
+    width: 46px;
+    height: 46px;
+
+    opacity: .44;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(168, 85, 247, .50)
+        );
+
+    pointer-events: none;
+}
+
+.camera-rune-left {
+    left: 7px;
+
+    transform:
+        translateY(-50%)
+        rotate(-90deg);
+}
+
+.camera-rune-right {
+    right: 7px;
+
+    transform:
+        translateY(-50%)
+        rotate(90deg);
+}
+
+
+/* =====================================
+   NIEBLA DENTRO DE LA CÁMARA
+===================================== */
+
+.camera-fog {
+    position: absolute;
+
+    left: -10%;
+    bottom: -225px;
+
+    width: 120%;
+
+    opacity: .24;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+
+    animation:
+        cameraFog 18s ease-in-out infinite alternate;
+}
+
+
+/* =====================================
+   PLUMA DE LA CÁMARA
+===================================== */
+
+.camera-feather {
+    position: absolute;
+
+    right: -8px;
+    top: -21px;
+
+    width: 125px;
+
+    opacity: .72;
+
+    pointer-events: none;
+
+    filter:
+        brightness(4)
+        saturate(0)
+        drop-shadow(
+            0 0 10px rgba(255, 255, 255, .16)
+        )
+        drop-shadow(
+            0 0 18px rgba(168, 85, 247, .20)
+        );
+
+    animation:
+        cameraFeather 9s ease-in-out infinite;
+}
+
+
+/* =====================================
+   ÁREA DEL CHAT PREDETERMINADO
+===================================== */
+
+.chat-area {
+    position: absolute;
+
+    right: 48px;
+    top: 148px;
+
+    width: 455px;
+    height: 840px;
+
+    z-index: 20;
+
+    border-radius: 24px;
+
+    /*
+       Sin fondo para que debajo se vea
+       el chat predeterminado de OBS.
+    */
+    background: transparent;
+
+    border:
+        2px solid rgba(168, 85, 247, .35);
+
+    box-shadow:
+        0 0 15px rgba(168, 85, 247, .17),
+        0 0 34px rgba(109, 40, 217, .10),
+        inset 0 0 0 2px rgba(255, 255, 255, .025),
+        inset 0 0 30px rgba(0, 0, 0, .30);
+
+    overflow: hidden;
+}
+
+.chat-header {
+    position: absolute;
+
+    left: 13px;
+    right: 13px;
+    top: 10px;
+
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    border-bottom:
+        1px solid rgba(168, 85, 247, .24);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(9, 9, 11, .72),
+            rgba(9, 9, 11, .24)
+        );
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+.chat-header img {
+    width: 25px;
+    height: 25px;
+
+    opacity: .48;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(168, 85, 247, .45)
+        );
+}
+
+.chat-header span {
+    font-family: Cinzel, serif;
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    color: rgba(229, 229, 229, .76);
+}
+
+.chat-window {
+    position: absolute;
+
+    left: 13px;
+    right: 13px;
+    top: 72px;
+    bottom: 13px;
+
+    border-radius: 14px;
+
+    background: transparent;
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   BARRA INFERIOR
+===================================== */
+
+.bottom-bar {
+    position: absolute;
+
+    left: 48px;
+    right: 48px;
+    bottom: 20px;
+
+    height: 48px;
+
+    z-index: 30;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 25px;
+
+    pointer-events: none;
+}
+
+.bottom-bar p {
+    margin: 0;
+
+    font-family: Cinzel, serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: rgba(229, 229, 229, .38);
+}
+
+.bottom-decoration {
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168, 85, 247, .30),
+            transparent
+        );
+}
+
+
+/* =====================================
+   NIEBLA EXTERIOR
+===================================== */
+
+.fog {
+    position: absolute;
+
+    z-index: 12;
+
+    pointer-events: none;
+
+    filter: blur(6px);
+}
+
+.fog-left {
+    left: -260px;
+    bottom: -290px;
+
+    width: 1080px;
+
+    opacity: .26;
+
+    animation:
+        fogLeft 19s ease-in-out infinite alternate;
+}
+
+.fog-right {
+    right: -250px;
+    bottom: -310px;
+
+    width: 900px;
+
+    opacity: .20;
+
+    transform: scaleX(-1);
+
+    animation:
+        fogRight 22s ease-in-out infinite alternate;
+}
+
+
+/* =====================================
+   PLUMAS EXTERIORES
+===================================== */
+
+.feather {
+    position: absolute;
+
+    z-index: 35;
+
+    pointer-events: none;
+
+    filter:
+        brightness(4)
+        saturate(0)
+        contrast(1.1)
+        drop-shadow(
+            0 0 12px rgba(255, 255, 255, .15)
+        )
+        drop-shadow(
+            0 0 20px rgba(168, 85, 247, .15)
+        );
+}
+
+.feather-left {
+    left: 5px;
+    bottom: -20px;
+
+    width: 145px;
+
+    opacity: .45;
+
+    animation:
+        featherLeft 11s ease-in-out infinite;
+}
+
+.feather-right {
+    right: 2px;
+    top: 62px;
+
+    width: 105px;
+
+    opacity: .30;
+
+    animation:
+        featherRight 13s ease-in-out infinite;
+}
+
+
+/* =====================================
+   ANIMACIONES
+===================================== */
+
+@keyframes borderPulse {
+    0%,
+    100% {
+        border-color:
+            rgba(168, 85, 247, .34);
+
+        box-shadow:
+            0 0 13px rgba(168, 85, 247, .17),
+            0 0 35px rgba(109, 40, 217, .10),
+            inset 0 0 0 2px rgba(255, 255, 255, .025),
+            inset 0 0 22px rgba(0, 0, 0, .30);
+    }
+
+    50% {
+        border-color:
+            rgba(168, 85, 247, .61);
+
+        box-shadow:
+            0 0 21px rgba(168, 85, 247, .31),
+            0 0 49px rgba(109, 40, 217, .17),
+            inset 0 0 0 2px rgba(255, 255, 255, .04),
+            inset 0 0 27px rgba(0, 0, 0, .36);
+    }
+}
+
+@keyframes cameraFog {
+    from {
+        transform: translateX(-42px);
+    }
+
+    to {
+        transform: translateX(40px);
+    }
+}
+
+@keyframes cameraFeather {
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(23deg);
+    }
+
+    50% {
+        transform:
+            translateY(7px)
+            rotate(18deg);
+    }
+}
+
+@keyframes fogLeft {
+    from {
+        transform: translateX(-60px);
+    }
+
+    to {
+        transform: translateX(55px);
+    }
+}
+
+@keyframes fogRight {
+    from {
+        transform:
+            translateX(55px)
+            scaleX(-1);
+    }
+
+    to {
+        transform:
+            translateX(-45px)
+            scaleX(-1);
+    }
+}
+
+@keyframes featherLeft {
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-25deg);
+    }
+
+    50% {
+        transform:
+            translateY(-13px)
+            rotate(-18deg);
+    }
+}
+
+@keyframes featherRight {
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(28deg);
+    }
+
+    50% {
+        transform:
+            translateY(13px)
+            rotate(21deg);
+    }
+}
