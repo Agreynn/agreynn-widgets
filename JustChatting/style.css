@@ -532,7 +532,8 @@ body {
     pointer-events: none;
 
     filter:
-        brightness(4)
+    invert(1)
+        brightness(100)
         saturate(0)
         contrast(1.1)
         drop-shadow(
